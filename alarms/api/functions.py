@@ -18,4 +18,4 @@ def execution_automation(name):
     response = client.start_automation_execution(
         DocumentName=f'{name}'
     )
-    return {response['AutomationExecutionId']}
+    return {'AutomationExecutionId': response['AutomationExecutionId']}
