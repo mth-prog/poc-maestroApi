@@ -16,7 +16,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from alarms.api.viewset import hello_world
 
 urlpatterns = [
     path("alarm/", include('alarms.api.urls')),
