@@ -7,7 +7,7 @@ def list_automation(name):
         DocumentFilterList=[
             {
                 'key': 'Name',
-                'value': f'{name}',
+                'value': f'{name}'
             },
         ]
     )
