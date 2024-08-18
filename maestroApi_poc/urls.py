@@ -18,15 +18,18 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework import routers
+
+from Users.api.viewset import ExternalModelViewSet
 from alarms.api.viewset import EC2ViewSet
 
 router = routers.DefaultRouter()
 router.register('ec2', EC2ViewSet, basename='ec2-status')
+router.register('Users', ExternalModelViewSet, basename='user-status')
 
 urlpatterns = [
     # django rest 
     path("alarm-django/", include('alarms.api.urls')),
-    path("alarm-django-rest/", include(router.urls),),
+    path("api/", include(router.urls),),
     path('api-token-auth/', obtain_auth_token),
 
     # django
