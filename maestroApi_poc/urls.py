@@ -17,10 +17,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework.authtoken.views import obtain_auth_token
+from rest_framework import routers
+from alarms.api.viewset import EC2ViewSet
 
+router = routers.DefaultRouter()
+router.register('ec2', EC2ViewSet, basename='ec2-status')
 
 urlpatterns = [
-    path("alarm/", include('alarms.api.urls')),
+    # django rest 
+    path("alarm-django/", include('alarms.api.urls')),
+    path("alarm-django-rest/", include(router.urls),),
+    path('api-token-auth/', obtain_auth_token),
+
+    # django
     path('admin/', admin.site.urls),
-    path('api-token-auth/', obtain_auth_token)
 ]
